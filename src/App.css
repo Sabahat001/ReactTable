@@ -59,7 +59,13 @@ tr:nth-child(even) {
   background-color: #dddddd;
 } */
 
-
+/* td, th {
+  border: 1px solid #141111;
+  text-align: left;
+  padding-left: 90px;
+  padding-right: 20px;
+  
+} */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -69,7 +75,9 @@ table {
 
 table th,table td {
   border: none;
-  padding: 3px;
+  padding: 1px;
+  padding-left: 2px;
+  padding-right: 10px;
 }
 
 th {
