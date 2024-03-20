@@ -64,26 +64,37 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+
 }
 
 table th,table td {
-  border: 2px solid #e7a3a3;
-  padding: 8px;
+  border: none;
+  padding: 3px;
 }
 
+th {
+  height: 40px;
+  color: white;
+}
 table th {
-  background-color: #e69292;
-  border: 1px solid #7e4646;
+  background-color: #4a7cc6;
+  border: none;
 }
 
 table tr:nth-child(even) {
-  background-color: #ebd7d7;
+  background-color: #dfe4ed;
 }
 
 table tr:hover {
   background-color: #ddd;
 }
 
+th, td {
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 14px; /* Reduce font size */
+
+}
 form {
   margin-bottom: 20px;
 }

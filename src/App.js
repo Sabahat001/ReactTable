@@ -524,8 +524,10 @@ const jsonData = [
 ];
 
 const App = () => {
+ 
   const [data, setData] = useState(jsonData);
   const [formData, setFormData] = useState({ _id: '', balance: '', age: '', eyeColor: '', name: '', gender: '', company: '', email: '', phone: '', address: '', registered: '' });
+  const [editId, setEditId] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -534,9 +536,19 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newData = [...data, formData];
-    setData(newData);
+    if (editId !== null) {
+      const updatedData = data.map(item => (item._id === editId ? formData : item));
+      setData(updatedData);
+      setEditId(null);
+    } else {
+      setData([...data, formData]);
+    }
     setFormData({ _id: '', balance: '', age: '', eyeColor: '', name: '', gender: '', company: '', email: '', phone: '', address: '', registered: '' });
+  };
+
+  const handleEdit = (item) => {
+    setFormData(item);
+    setEditId(item._id);
   };
 
   const handleDelete = (id) => {
@@ -558,7 +570,7 @@ const App = () => {
         <input type="text" name="phone" placeholder="Phone" value={formData.phone} onChange={handleChange} />
         <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
         <input type="text" name="registered" placeholder="Registered" value={formData.registered} onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <button type="submit">{editId !== null ? 'Update' : 'Submit'}</button>
       </form>
       <table>
         <thead>
@@ -594,7 +606,7 @@ const App = () => {
               <td>
                 <button onClick={() => handleDelete(item._id)}>Delete</button>
                 <button onClick={() => alert(`Read: ${item._id}`)}><span role="img" aria-label="Read">👁️</span></button>
-                <button onClick={() => alert(`Edit: ${item._id}`)}><span role="img" aria-label="Edit">✏️</span></button>
+                <button onClick={() => handleEdit(item)}><span role="img" aria-label="Edit">✏️</span></button>
               </td>
             </tr>
           ))}
