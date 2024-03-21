@@ -557,7 +557,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={handleSubmit}>
         <input type="text" name="_id" placeholder="ID" value={formData._id} onChange={handleChange}/>
         <input type="text" name="balance" placeholder="Balance" value={formData.balance} onChange={handleChange} />
