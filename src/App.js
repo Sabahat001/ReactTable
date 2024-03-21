@@ -555,6 +555,9 @@ const App = () => {
     const newData = data.filter(item => item._id !== id);
     setData(newData);
   };
+  const handleRead = (item) => {
+    setFormData(item);
+  };
 
   return (
     <div className='container'>
@@ -605,7 +608,7 @@ const App = () => {
               <td>{item.registered}</td>
               <td>
                 <button onClick={() => handleDelete(item._id)}>Delete</button>
-                <button onClick={() => alert(`Read: ${item._id}`)}><span role="img" aria-label="Read">👁️</span></button>
+                <button onClick={() => handleRead(item)}><span role="img" aria-label="read">👁️</span></button>
                 <button onClick={() => handleEdit(item)}><span role="img" aria-label="Edit">✏️</span></button>
               </td>
             </tr>
